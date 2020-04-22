@@ -1,0 +1,69 @@
+﻿using Microsoft.SqlServer.Server;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Model
+{
+    /// <summary>
+    /// Класс со скидкой по сертефикату
+    /// </summary>
+    public class PurchaseByCertificate : IPurchase
+    {
+        /// <summary>
+        /// Приватное поле цена до скидки
+        /// </summary>
+        private double _facePrice;
+        
+        /// <summary>
+        /// Цена до скидки
+        /// </summary>
+        double IPurchase.FacePrice
+        {
+            get
+            {
+                return _facePrice;
+            }
+            set
+            {
+                _facePrice = SetRules.SetValue("Цена", value);
+            }
+        }
+
+        /// <summary>
+        /// Приватное поле велечины скидки по сертифекату
+        /// </summary>
+        private double _valueOfCertificate;
+
+        /// <summary>
+        /// Величина скидки по сертифекату
+        /// </summary>
+        double ValueOfCertificate
+        {
+            get
+            {
+                return _valueOfCertificate;
+            }
+            set
+            {
+                _valueOfCertificate = SetRules.SetValue("Скидка", value);
+            }
+        }
+
+        /// <summary>
+        /// Цена после скидки по сертифекату
+        /// </summary>
+        double IPurchase.PriceAfterDiscount
+        {
+            get
+            {
+                return (_facePrice > _valueOfCertificate)
+                    ? _facePrice - _valueOfCertificate
+                    : 0;
+            }
+        }
+    }
+}
