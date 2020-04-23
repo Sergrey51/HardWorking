@@ -41,7 +41,7 @@ namespace Model
         /// <summary>
         /// Величина скидки по сертифекату
         /// </summary>
-        double ValueOfCertificate
+        public double ValueOfCertificate
         {
             get
             {
@@ -64,6 +64,21 @@ namespace Model
                     ? _facePrice - _valueOfCertificate
                     : 0;
             }
+        }
+
+        /// <summary>
+        /// Конструктор класса по умолчанию
+        /// </summary>
+        public PurchaseByCertificate() : this(0) { }
+
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
+        /// <param name="facePrice">Цена товара до скидки</param>
+        public PurchaseByCertificate(double facePrice)
+        {
+            _facePrice = facePrice;
+            _valueOfCertificate = 0;
         }
     }
 }

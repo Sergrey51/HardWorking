@@ -37,7 +37,6 @@
             this.textBoxPriceAfterDiscount = new System.Windows.Forms.TextBox();
             this.radioButtonCertificate = new System.Windows.Forms.RadioButton();
             this.radioButtonPercent = new System.Windows.Forms.RadioButton();
-            this.buttonSolvePrice = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lableValueOfDiscount = new System.Windows.Forms.Label();
             this.textBoxValueDiscount = new System.Windows.Forms.TextBox();
@@ -52,6 +51,7 @@
             this.textBoxFacePrice.Size = new System.Drawing.Size(124, 29);
             this.textBoxFacePrice.TabIndex = 0;
             this.textBoxFacePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxFacePrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFacePrice_KeyDown);
             // 
             // label1
             // 
@@ -88,7 +88,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(6, 207);
+            this.label4.Location = new System.Drawing.Point(6, 170);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(163, 24);
             this.label4.TabIndex = 6;
@@ -98,7 +98,7 @@
             // textBoxPriceAfterDiscount
             // 
             this.textBoxPriceAfterDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxPriceAfterDiscount.Location = new System.Drawing.Point(168, 204);
+            this.textBoxPriceAfterDiscount.Location = new System.Drawing.Point(168, 167);
             this.textBoxPriceAfterDiscount.Name = "textBoxPriceAfterDiscount";
             this.textBoxPriceAfterDiscount.ReadOnly = true;
             this.textBoxPriceAfterDiscount.Size = new System.Drawing.Size(95, 29);
@@ -132,17 +132,6 @@
             this.radioButtonPercent.UseVisualStyleBackColor = true;
             this.radioButtonPercent.CheckedChanged += new System.EventHandler(this.radioButtonPercent_CheckedChanged);
             // 
-            // buttonSolvePrice
-            // 
-            this.buttonSolvePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonSolvePrice.Location = new System.Drawing.Point(89, 169);
-            this.buttonSolvePrice.Name = "buttonSolvePrice";
-            this.buttonSolvePrice.Size = new System.Drawing.Size(93, 29);
-            this.buttonSolvePrice.TabIndex = 10;
-            this.buttonSolvePrice.Text = "Расчёт";
-            this.buttonSolvePrice.UseVisualStyleBackColor = true;
-            this.buttonSolvePrice.Click += new System.EventHandler(this.buttonSolvePrice_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.radioButtonCertificate);
@@ -162,9 +151,9 @@
             this.lableValueOfDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lableValueOfDiscount.Location = new System.Drawing.Point(12, 133);
             this.lableValueOfDiscount.Name = "lableValueOfDiscount";
-            this.lableValueOfDiscount.Size = new System.Drawing.Size(139, 20);
+            this.lableValueOfDiscount.Size = new System.Drawing.Size(88, 20);
             this.lableValueOfDiscount.TabIndex = 12;
-            this.lableValueOfDiscount.Text = "Цена со скидкой:";
+            this.lableValueOfDiscount.Text = "НАДПИСЬ";
             this.lableValueOfDiscount.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lableValueOfDiscount.Visible = false;
             // 
@@ -177,17 +166,17 @@
             this.textBoxValueDiscount.TabIndex = 13;
             this.textBoxValueDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxValueDiscount.Visible = false;
+            this.textBoxValueDiscount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxValueDiscount_KeyDown);
             // 
             // Purchase
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 245);
+            this.ClientSize = new System.Drawing.Size(272, 203);
             this.Controls.Add(this.textBoxValueDiscount);
             this.Controls.Add(this.lableValueOfDiscount);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonSolvePrice);
             this.Controls.Add(this.textBoxPriceAfterDiscount);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -216,7 +205,6 @@
         public System.Windows.Forms.TextBox textBoxPriceAfterDiscount;
         private System.Windows.Forms.RadioButton radioButtonCertificate;
         private System.Windows.Forms.RadioButton radioButtonPercent;
-        private System.Windows.Forms.Button buttonSolvePrice;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lableValueOfDiscount;
         public System.Windows.Forms.TextBox textBoxValueDiscount;

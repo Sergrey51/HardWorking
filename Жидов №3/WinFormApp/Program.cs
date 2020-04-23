@@ -15,7 +15,7 @@ namespace WinFormApp
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -39,7 +39,7 @@ namespace Model
         /// <summary>
         /// Величина скидки по проценту
         /// </summary>
-        double ValueOfPercent
+        public double ValueOfPercent
         {
             get
             {
@@ -66,6 +66,21 @@ namespace Model
             {
                 return Math.Round(_facePrice*(1-_valueOfPercent/100),2);
             }
+        }
+
+        /// <summary>
+        /// Конструктор класса по умолчанию
+        /// </summary>
+        public PurchaseByPercent() : this(0) { }
+
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
+        /// <param name="facePrice">Цена товара до скидки</param>
+        public PurchaseByPercent (double facePrice)
+        {
+            _facePrice = facePrice;
+            _valueOfPercent = 0;
         }
     }
 }

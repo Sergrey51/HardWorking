@@ -41,5 +41,19 @@ namespace Model
                 return _facePrice;
             }
         }
+
+        /// <summary>
+        /// Конструктор класса по умолчанию
+        /// </summary>
+        public PurchaseWithoutDiscount() : this(0) { }
+
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
+        /// <param name="facePrice">Цена товара до скидки</param>
+        public PurchaseWithoutDiscount(double facePrice)
+        {
+            _facePrice = facePrice;
+        }
     }
 }
