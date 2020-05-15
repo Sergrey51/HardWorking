@@ -20,7 +20,7 @@ namespace WinFormApp
         /// <summary>
         /// Объявление переменной интерфейса
         /// </summary>
-        IPurchase purchase;
+        private IPurchase _purchase;
 
         /// <summary>
         /// Метод, инициализирующий форму
@@ -37,9 +37,9 @@ namespace WinFormApp
         /// <param name="e"></param>
         private void Purchase_Load(object sender, EventArgs e)
         {
-            purchase = new PurchaseWithoutDiscount();
+            _purchase = new PurchaseWithoutDiscount();
             DisplayData();
-            radioButtonWithoutDiscount.Checked = true;
+            RadioButtonWithoutDiscount.Checked = true;
         }
 
         /// <summary>
@@ -47,13 +47,13 @@ namespace WinFormApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radioButtonWithoutDiscount_CheckedChanged(
+        private void RadioButtonWithoutDiscount_CheckedChanged(
             object sender, EventArgs e)
         {
-            textBoxValueDiscount.Visible = false;
+            TextBoxValueDiscount.Visible = false;
             lableValueOfDiscount.Visible = false;
 
-            purchase = new PurchaseWithoutDiscount(purchase.FacePrice);
+            _purchase = new PurchaseWithoutDiscount(_purchase.FacePrice);
             DisplayData();
         }
 
@@ -62,14 +62,14 @@ namespace WinFormApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radioButtonPercent_CheckedChanged(
+        private void RadioButtonPercent_CheckedChanged(
             object sender, EventArgs e)
         {
             lableValueOfDiscount.Text = "Процент скидки:";
-            textBoxValueDiscount.Visible = true;
+            TextBoxValueDiscount.Visible = true;
             lableValueOfDiscount.Visible = true;
 
-            purchase = new PurchaseByPercent(purchase.FacePrice);
+            _purchase = new PurchaseByPercent(_purchase.FacePrice);
             DisplayData();
         }
 
@@ -78,14 +78,14 @@ namespace WinFormApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radioButtonCertificate_CheckedChanged(
+        private void RadioButtonCertificate_CheckedChanged(
             object sender, EventArgs e)
         {
             lableValueOfDiscount.Text = "Сертефикат на:";
-            textBoxValueDiscount.Visible = true;
+            TextBoxValueDiscount.Visible = true;
             lableValueOfDiscount.Visible = true;
             
-            purchase = new PurchaseByCertificate(purchase.FacePrice);
+            _purchase = new PurchaseByCertificate(_purchase.FacePrice);
             DisplayData();
         }
 
@@ -94,44 +94,30 @@ namespace WinFormApp
         /// </summary>
         private void DisplayData()
         {
-            textBoxFacePrice.Text = purchase.FacePrice.ToString();
-            textBoxPriceAfterDiscount.Text =
-                purchase.PriceAfterDiscount.ToString();
+            TextBoxFacePrice.Text = _purchase.FacePrice.ToString();
+            TextBoxPriceAfterDiscount.Text =
+                _purchase.PriceAfterDiscount.ToString();
 
-            if (purchase is PurchaseByPercent)
+            if (_purchase is PurchaseByPercent)
             {
-                textBoxValueDiscount.Text =
-                    ((PurchaseByPercent)purchase).ValueOfPercent.ToString();
+                TextBoxValueDiscount.Text =
+                    ((PurchaseByPercent)_purchase).ValueOfPercent.ToString();
             }
 
-            if (purchase is PurchaseByCertificate)
+            if (_purchase is PurchaseByCertificate)
             {
-                textBoxValueDiscount.Text =
-                    ((PurchaseByCertificate)purchase).
+                TextBoxValueDiscount.Text =
+                    ((PurchaseByCertificate)_purchase).
                     ValueOfCertificate.ToString();
             }
         }
 
         /// <summary>
-        /// Событие при вводе цены товара
+        /// Событие при вводе значения
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBoxFacePrice_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                EnterInformarion();
-            }
-        }
-
-        /// <summary>
-        /// Событие при вводе информации о скидке
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textBoxValueDiscount_KeyDown(
-            object sender, KeyEventArgs e)
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -146,19 +132,19 @@ namespace WinFormApp
         {
             try
             {
-                purchase.FacePrice =
-                    Convert.ToDouble(textBoxFacePrice.Text);
+                _purchase.FacePrice =
+                    Convert.ToDouble(TextBoxFacePrice.Text);
 
-                if (purchase is PurchaseByPercent)
+                if (_purchase is PurchaseByPercent)
                 {
-                    ((PurchaseByPercent)purchase).ValueOfPercent =
-                        Convert.ToDouble(textBoxValueDiscount.Text);
+                    ((PurchaseByPercent)_purchase).ValueOfPercent =
+                        Convert.ToDouble(TextBoxValueDiscount.Text);
                 }
 
-                if (purchase is PurchaseByCertificate)
+                if (_purchase is PurchaseByCertificate)
                 {
-                    ((PurchaseByCertificate)purchase).ValueOfCertificate =
-                        Convert.ToDouble(textBoxValueDiscount.Text);
+                    ((PurchaseByCertificate)_purchase).ValueOfCertificate =
+                        Convert.ToDouble(TextBoxValueDiscount.Text);
                 }
 
                 DisplayData();

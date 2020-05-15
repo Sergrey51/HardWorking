@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Purshase.cs">
+    <Compile Include="PurshaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Purshase.Designer.cs">
-      <DependentUpon>Purshase.cs</DependentUpon>
+    <Compile Include="PurshaseForm.Designer.cs">
+      <DependentUpon>PurshaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Purshase.resx">
-      <DependentUpon>Purshase.cs</DependentUpon>
+    <EmbeddedResource Include="PurshaseForm.resx">
+      <DependentUpon>PurshaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
