@@ -22,7 +22,7 @@ namespace WinFormApp
         /// <summary>
         /// Оснвной лист покупок
         /// </summary>
-        public static BindingList<IPurchase> purchases =
+        private static BindingList<IPurchase> _purchases =
             new BindingList<IPurchase>();
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace WinFormApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DataPurchasesView.DataSource = purchases;
+            DataPurchasesView.DataSource = _purchases;
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace WinFormApp
         /// <param name="e"></param>
         private void AddPurchase_Click(object sender, EventArgs e)
         {
-            var purchase = new Purchase();
+            var purchase = new Purchase(_purchases);
             purchase.Show();
         }
 
@@ -63,9 +63,9 @@ namespace WinFormApp
         {
             int _counter = DataPurchasesView.SelectedRows.Count;
 
-            for (int i=0; i< _counter; i++)
+            for (int i = 0; i < _counter; i++)
             {
-                purchases.RemoveAt(DataPurchasesView.SelectedRows[0].Index);
+                _purchases.RemoveAt(DataPurchasesView.SelectedRows[0].Index);
             }
         }
 
@@ -76,7 +76,7 @@ namespace WinFormApp
         /// <param name="e"></param>
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            var search = new SearchForm();
+            var search = new SearchForm(_purchases);
             search.Show();
         }
 
@@ -91,8 +91,8 @@ namespace WinFormApp
             using (var fileStream = new FileStream("Purchases.kek",
                 FileMode.OpenOrCreate))
             {
-                formatter.Serialize(fileStream, purchases);
-                MessageBox.Show("Файл сериализован");
+                formatter.Serialize(fileStream, _purchases);
+                MessageBox.Show("Файл сохранён!");
             }
         }
 
@@ -110,11 +110,11 @@ namespace WinFormApp
                 var newpurchases = (BindingList<IPurchase>)
                     formatter.Deserialize(fileStream);
 
-                purchases.Clear();
+                _purchases.Clear();
 
                 foreach (var purchase in newpurchases)
                 {
-                    purchases.Add(purchase);
+                    _purchases.Add(purchase);
                 }
             }
         }

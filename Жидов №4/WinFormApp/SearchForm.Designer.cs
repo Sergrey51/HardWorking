@@ -73,6 +73,7 @@
             this.FacePriceRadioButton.TabStop = true;
             this.FacePriceRadioButton.Text = "Стартовая цена";
             this.FacePriceRadioButton.UseVisualStyleBackColor = true;
+            this.FacePriceRadioButton.CheckedChanged += new System.EventHandler(this.FacePriceRadioButton_CheckedChanged);
             // 
             // FinishPriceRadioButton
             // 

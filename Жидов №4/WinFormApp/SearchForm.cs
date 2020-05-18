@@ -17,17 +17,24 @@ namespace WinFormApp
     public partial class SearchForm : Form
     {
         /// <summary>
+        /// Лист покупок из основной формы
+        /// </summary>
+        private BindingList<IPurchase> _purchases;
+
+        /// <summary>
         /// Инициализация формы
         /// </summary>
-        public SearchForm()
+        public SearchForm(BindingList<IPurchase> purchases)
         {
             InitializeComponent();
+
+            _purchases = purchases;
         }
 
         /// <summary>
         /// Отфильтрованный список
         /// </summary>
-        BindingList<IPurchase> purchasesSearch =
+        private BindingList<IPurchase> _purchasesSearch =
             new BindingList<IPurchase>();
 
         /// <summary>
@@ -37,7 +44,7 @@ namespace WinFormApp
         /// <param name="e"></param>
         private void SearchForm_Load(object sender, EventArgs e)
         {
-            DataPurchasesView.DataSource = purchasesSearch;
+            DataPurchasesView.DataSource = _purchasesSearch;
 
             FacePriceRadioButton.Checked = true;
         }
@@ -80,29 +87,29 @@ namespace WinFormApp
         /// </summary>
         private void StartSearch()
         {
-            purchasesSearch.Clear();
+            _purchasesSearch.Clear();
 
             try
             {
                 if (FacePriceRadioButton.Checked)
                 {
-                    foreach (var row in MainForm.purchases)
+                    foreach (var row in _purchases)
                     {
                         if (row.FacePrice == Convert.ToDouble(
                             SearchTextBox.Text))
                         {
-                            purchasesSearch.Add(row);
+                            _purchasesSearch.Add(row);
                         }
                     }
                 }
                 else
                 {
-                    foreach (var row in MainForm.purchases)
+                    foreach (var row in _purchases)
                     {
                         if (row.PriceAfterDiscount == Convert.ToDouble(
                             SearchTextBox.Text))
                         {
-                            purchasesSearch.Add(row);
+                            _purchasesSearch.Add(row);
                         }
                     }
                 }
@@ -113,6 +120,17 @@ namespace WinFormApp
                     $"\nВведите десятичное число!!(Через запятую)");
             }
 
+        }
+
+        /// <summary>
+        /// Смена фактора поиска на стартовую цену
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FacePriceRadioButton_CheckedChanged(
+            object sender, EventArgs e)
+        {
+            _purchasesSearch.Clear();
         }
     }
 }

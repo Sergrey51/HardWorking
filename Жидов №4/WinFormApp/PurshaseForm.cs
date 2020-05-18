@@ -28,11 +28,19 @@ namespace WinFormApp
         private bool _isCorrect = false;
 
         /// <summary>
+        /// Лист покупок из основной формы
+        /// </summary>
+        private BindingList<IPurchase> _purchases;
+
+        /// <summary>
         /// Метод, инициализирующий форму
         /// </summary>
-        public Purchase()
+        /// <param name="purchases">Список покупок</param>
+        public Purchase(BindingList<IPurchase> purchases)
         {
             InitializeComponent();
+
+            _purchases = purchases;
 
             #if !DEBUG
             RandomButton.Visible = false;
@@ -93,7 +101,7 @@ namespace WinFormApp
             lableValueOfDiscount.Text = "Сертефикат на:";
             TextBoxValueDiscount.Visible = true;
             lableValueOfDiscount.Visible = true;
-            
+
             _purchase = new PurchaseByCertificate(_purchase.FacePrice);
             DisplayData();
         }
@@ -177,7 +185,7 @@ namespace WinFormApp
         private void AddPurchaseButton_Click(object sender, EventArgs e)
         {
             EnterInformarion();
-            MainForm.purchases.Add(_purchase);
+            _purchases.Add(_purchase);
             if (_isCorrect) Close();
         }
 
@@ -198,8 +206,7 @@ namespace WinFormApp
         /// <param name="e"></param>
         private void RandomButton_Click(object sender, EventArgs e)
         {
-            _purchase = RandomPurchase.CreatePurchase();
-            MainForm.purchases.Add(_purchase);
+            _purchases.Add(RandomPurchase.CreatePurchase());
             Close();
         }
     }
