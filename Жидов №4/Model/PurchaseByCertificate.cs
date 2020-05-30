@@ -22,7 +22,7 @@ namespace Model
         /// <summary>
         /// Цена до скидки
         /// </summary>
-        double IPurchase.FacePrice
+        public double FacePrice
         {
             get
             {
@@ -57,7 +57,7 @@ namespace Model
         /// <summary>
         /// Цена после скидки по сертифекату
         /// </summary>
-        double IPurchase.PriceAfterDiscount
+        public double PriceAfterDiscount
         {
             get
             {

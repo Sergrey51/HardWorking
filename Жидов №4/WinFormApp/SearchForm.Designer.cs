@@ -46,7 +46,7 @@
             this.groupBox1.Controls.Add(this.DataPurchasesView);
             this.groupBox1.Location = new System.Drawing.Point(124, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(246, 149);
+            this.groupBox1.Size = new System.Drawing.Size(308, 149);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Найденные элементы";
@@ -60,7 +60,8 @@
             this.DataPurchasesView.Location = new System.Drawing.Point(0, 19);
             this.DataPurchasesView.Name = "DataPurchasesView";
             this.DataPurchasesView.ReadOnly = true;
-            this.DataPurchasesView.Size = new System.Drawing.Size(245, 130);
+            this.DataPurchasesView.RowHeadersVisible = false;
+            this.DataPurchasesView.Size = new System.Drawing.Size(308, 130);
             this.DataPurchasesView.TabIndex = 2;
             // 
             // FacePriceRadioButton
@@ -127,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(376, 169);
+            this.ClientSize = new System.Drawing.Size(439, 169);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.CloseButton);

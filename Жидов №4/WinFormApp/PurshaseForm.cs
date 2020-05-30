@@ -185,7 +185,10 @@ namespace WinFormApp
         private void AddPurchaseButton_Click(object sender, EventArgs e)
         {
             EnterInformarion();
-            _purchases.Add(_purchase);
+            if (_purchase.FacePrice != 0)
+            {
+                _purchases.Add(_purchase);
+            }
             if (_isCorrect) Close();
         }
 

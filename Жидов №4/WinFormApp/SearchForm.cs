@@ -46,6 +46,27 @@ namespace WinFormApp
         {
             DataPurchasesView.DataSource = _purchasesSearch;
 
+            if (DataPurchasesView.Columns[0].HeaderText == "FacePrice")
+            {
+                DataPurchasesView.Columns[0].HeaderText = "Стартовая цена";
+            }
+
+            if (DataPurchasesView.Columns[1].HeaderText ==
+                "PriceAfterDiscount")
+            {
+                DataPurchasesView.Columns[1].HeaderText =
+                    "Цена после скидки";
+            }
+            DataPurchasesView.RowHeadersWidth = 20;
+            DataPurchasesView.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.Fill;
+
+            DataPurchasesView.DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleCenter;
+
+            DataPurchasesView.ColumnHeadersDefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleCenter;
+
             FacePriceRadioButton.Checked = true;
         }
 
