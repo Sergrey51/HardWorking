@@ -57,6 +57,7 @@ namespace WinFormApp
             _purchase = new PurchaseWithoutDiscount();
             DisplayData();
             RadioButtonWithoutDiscount.Checked = true;
+            labelPressEnter.Visible = false;
         }
 
         /// <summary>
@@ -69,6 +70,7 @@ namespace WinFormApp
         {
             TextBoxValueDiscount.Visible = false;
             lableValueOfDiscount.Visible = false;
+            labelPressEnter.Visible = false;
 
             _purchase = new PurchaseWithoutDiscount(_purchase.FacePrice);
             DisplayData();
@@ -85,6 +87,7 @@ namespace WinFormApp
             lableValueOfDiscount.Text = "Процент скидки:";
             TextBoxValueDiscount.Visible = true;
             lableValueOfDiscount.Visible = true;
+            labelPressEnter.Visible = true;
 
             _purchase = new PurchaseByPercent(_purchase.FacePrice);
             DisplayData();
@@ -101,6 +104,7 @@ namespace WinFormApp
             lableValueOfDiscount.Text = "Сертефикат на:";
             TextBoxValueDiscount.Visible = true;
             lableValueOfDiscount.Visible = true;
+            labelPressEnter.Visible = true;
 
             _purchase = new PurchaseByCertificate(_purchase.FacePrice);
             DisplayData();

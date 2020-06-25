@@ -56,5 +56,16 @@ namespace Model
         {
             _facePrice = facePrice;
         }
+
+        /// <summary>
+        /// Описание операции
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return $"Покупка без скидки.";
+            }
+        }
     }
 }

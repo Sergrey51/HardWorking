@@ -19,10 +19,10 @@ namespace Model
         /// <returns>Корректное значение цены или скидки</returns>
         public static double SetValue(string text, double value)
         {
-            if ((value < 0) || (Double.IsNaN(value)))
+            if ((value <= 0) || (Double.IsNaN(value)))
             {
                 throw new ArgumentOutOfRangeException($"{text} должна " +
-                    "быть больше, либо равна 0.");
+                    "быть больше 0.");
             }
 
             return Math.Round(value, 2);

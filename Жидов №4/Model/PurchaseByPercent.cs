@@ -83,5 +83,17 @@ namespace Model
             _facePrice = facePrice;
             _valueOfPercent = 0;
         }
+
+        /// <summary>
+        /// Описание операции
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return $"Покупка по купону. Скидка по купону " +
+                    $" {_valueOfPercent}%.";
+            }
+        }
     }
 }

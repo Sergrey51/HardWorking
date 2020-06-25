@@ -21,5 +21,10 @@ namespace Model
         /// Цена после скидки
         /// </summary>
         double PriceAfterDiscount { get; }
+
+        /// <summary>
+        /// Описание операции
+        /// </summary>
+        string Description { get; }
     }
 }

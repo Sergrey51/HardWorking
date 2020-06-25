@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Threading;
 
 namespace WinFormApp
 {
@@ -22,7 +23,7 @@ namespace WinFormApp
         /// <summary>
         /// Оснвной лист покупок
         /// </summary>
-        private static BindingList<IPurchase> _purchases =
+        private BindingList<IPurchase> _purchases =
             new BindingList<IPurchase>();
 
         /// <summary>
@@ -40,31 +41,7 @@ namespace WinFormApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DataPurchasesView.DataSource = _purchases;
-
-            if (DataPurchasesView.Columns[0].HeaderText == "FacePrice")
-            {
-                DataPurchasesView.Columns[0].HeaderText = "Стартовая цена";
-            }
-
-            if (DataPurchasesView.Columns[1].HeaderText == 
-                "PriceAfterDiscount")
-            {
-                DataPurchasesView.Columns[1].HeaderText =
-                    "Цена после скидки";
-            }
-
-            DataPurchasesView.AutoSizeColumnsMode = 
-                DataGridViewAutoSizeColumnsMode.Fill;
-
-            DataPurchasesView.DefaultCellStyle.Alignment =
-                DataGridViewContentAlignment.MiddleCenter;
-
-            DataPurchasesView.ColumnHeadersDefaultCellStyle.Alignment =
-                DataGridViewContentAlignment.MiddleCenter;
-
-            DataPurchasesView.SelectionMode =
-                DataGridViewSelectionMode.FullRowSelect;
+            DataPurchaseView.Create(_purchases, DataPurchasesView);
         }
 
         /// <summary>
@@ -85,7 +62,9 @@ namespace WinFormApp
         /// <param name="e"></param>
         private void RemovePurshase_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < DataPurchasesView.SelectedRows.Count; i++)
+            var countOfDelete = DataPurchasesView.SelectedRows.Count;
+
+            for (int i = 0; i < countOfDelete; i++)
             {
                 _purchases.RemoveAt(DataPurchasesView.SelectedRows[0].Index);
             }
@@ -111,7 +90,6 @@ namespace WinFormApp
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                saveFileDialog.InitialDirectory = "c:\\";
                 saveFileDialog.Filter = "kek files (*.kek)|*.kek|" +
                     "All files (*.*)|*.*";
                 saveFileDialog.FilterIndex = 1;
@@ -141,7 +119,6 @@ namespace WinFormApp
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "c:\\";
                 openFileDialog.Filter = "kek files (*.kek)|*.kek|" +
                     "All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 1;
@@ -152,23 +129,30 @@ namespace WinFormApp
                     var formatter = new BinaryFormatter();
                     var filePath = openFileDialog.FileName;
 
-                    var wordsFilePath = filePath.Split('.');
-                    
-                    if (wordsFilePath.Last() == "kek")
+                    if (Path.GetExtension(filePath) == ".kek")
                     {
-                        using (var fileStream = new FileStream(filePath,
-                            FileMode.OpenOrCreate))
+                        try
                         {
-                            var newpurchases = (BindingList<IPurchase>)
-                                formatter.Deserialize(fileStream);
-
-                            _purchases.Clear();
-
-                            foreach (var purchase in newpurchases)
+                            using (var fileStream = new FileStream(filePath,
+                                 FileMode.OpenOrCreate))
                             {
-                                _purchases.Add(purchase);
+                                var newpurchases = (BindingList<IPurchase>)
+                                    formatter.Deserialize(fileStream);
+
+                                _purchases.Clear();
+
+                                foreach (var purchase in newpurchases)
+                                {
+                                    _purchases.Add(purchase);
+                                }
                             }
                         }
+                        catch
+                        {
+                            MessageBox.Show("Файл повреждён, " +
+                                "невозможно загрузить.");
+                        }
+
                     }
                     else
                     {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,6 +81,18 @@ namespace Model
         {
             _facePrice = facePrice;
             _valueOfCertificate = 0;
+        }
+
+        /// <summary>
+        /// Описание операции
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return $"Покупка по сертефикату. Сертифекат " +
+                    $"на {_valueOfCertificate}.";
+            }
         }
     }
 }

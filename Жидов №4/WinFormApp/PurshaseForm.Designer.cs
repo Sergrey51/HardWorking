@@ -42,6 +42,8 @@
             this.AddPurchaseButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.RandomButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelPressEnter = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +85,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(4, 127);
+            this.label4.Location = new System.Drawing.Point(4, 153);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 13);
             this.label4.TabIndex = 6;
@@ -93,7 +95,7 @@
             // TextBoxPriceAfterDiscount
             // 
             this.TextBoxPriceAfterDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxPriceAfterDiscount.Location = new System.Drawing.Point(120, 125);
+            this.TextBoxPriceAfterDiscount.Location = new System.Drawing.Point(120, 151);
             this.TextBoxPriceAfterDiscount.Name = "TextBoxPriceAfterDiscount";
             this.TextBoxPriceAfterDiscount.ReadOnly = true;
             this.TextBoxPriceAfterDiscount.Size = new System.Drawing.Size(95, 20);
@@ -133,7 +135,7 @@
             this.groupBox1.Controls.Add(this.RadioButtonPercent);
             this.groupBox1.Controls.Add(this.RadioButtonWithoutDiscount);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 39);
+            this.groupBox1.Location = new System.Drawing.Point(3, 54);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(212, 55);
             this.groupBox1.TabIndex = 11;
@@ -144,7 +146,7 @@
             // 
             this.lableValueOfDiscount.AutoSize = true;
             this.lableValueOfDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lableValueOfDiscount.Location = new System.Drawing.Point(4, 100);
+            this.lableValueOfDiscount.Location = new System.Drawing.Point(4, 115);
             this.lableValueOfDiscount.Name = "lableValueOfDiscount";
             this.lableValueOfDiscount.Size = new System.Drawing.Size(61, 13);
             this.lableValueOfDiscount.TabIndex = 12;
@@ -155,7 +157,7 @@
             // TextBoxValueDiscount
             // 
             this.TextBoxValueDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxValueDiscount.Location = new System.Drawing.Point(120, 98);
+            this.TextBoxValueDiscount.Location = new System.Drawing.Point(120, 113);
             this.TextBoxValueDiscount.Name = "TextBoxValueDiscount";
             this.TextBoxValueDiscount.Size = new System.Drawing.Size(95, 20);
             this.TextBoxValueDiscount.TabIndex = 13;
@@ -165,7 +167,7 @@
             // 
             // AddPurchaseButton
             // 
-            this.AddPurchaseButton.Location = new System.Drawing.Point(71, 151);
+            this.AddPurchaseButton.Location = new System.Drawing.Point(71, 177);
             this.AddPurchaseButton.Name = "AddPurchaseButton";
             this.AddPurchaseButton.Size = new System.Drawing.Size(73, 23);
             this.AddPurchaseButton.TabIndex = 14;
@@ -175,7 +177,7 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(150, 151);
+            this.CancelButton.Location = new System.Drawing.Point(150, 177);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(65, 23);
             this.CancelButton.TabIndex = 15;
@@ -185,7 +187,7 @@
             // 
             // RandomButton
             // 
-            this.RandomButton.Location = new System.Drawing.Point(6, 151);
+            this.RandomButton.Location = new System.Drawing.Point(6, 177);
             this.RandomButton.Name = "RandomButton";
             this.RandomButton.Size = new System.Drawing.Size(59, 22);
             this.RandomButton.TabIndex = 16;
@@ -193,12 +195,32 @@
             this.RandomButton.UseVisualStyleBackColor = true;
             this.RandomButton.Click += new System.EventHandler(this.RandomButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(85, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Нажмите Enter для ввода";
+            // 
+            // labelPressEnter
+            // 
+            this.labelPressEnter.AutoSize = true;
+            this.labelPressEnter.Location = new System.Drawing.Point(88, 135);
+            this.labelPressEnter.Name = "labelPressEnter";
+            this.labelPressEnter.Size = new System.Drawing.Size(136, 13);
+            this.labelPressEnter.TabIndex = 18;
+            this.labelPressEnter.Text = "Нажмите Enter для ввода";
+            // 
             // Purchase
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(222, 180);
+            this.ClientSize = new System.Drawing.Size(222, 206);
+            this.Controls.Add(this.labelPressEnter);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.RandomButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.AddPurchaseButton);
@@ -237,6 +259,8 @@
         private System.Windows.Forms.Button AddPurchaseButton;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button RandomButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelPressEnter;
     }
 }
 

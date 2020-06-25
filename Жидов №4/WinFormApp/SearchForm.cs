@@ -44,28 +44,7 @@ namespace WinFormApp
         /// <param name="e"></param>
         private void SearchForm_Load(object sender, EventArgs e)
         {
-            DataPurchasesView.DataSource = _purchasesSearch;
-
-            if (DataPurchasesView.Columns[0].HeaderText == "FacePrice")
-            {
-                DataPurchasesView.Columns[0].HeaderText = "Стартовая цена";
-            }
-
-            if (DataPurchasesView.Columns[1].HeaderText ==
-                "PriceAfterDiscount")
-            {
-                DataPurchasesView.Columns[1].HeaderText =
-                    "Цена после скидки";
-            }
-            DataPurchasesView.RowHeadersWidth = 20;
-            DataPurchasesView.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.Fill;
-
-            DataPurchasesView.DefaultCellStyle.Alignment =
-                DataGridViewContentAlignment.MiddleCenter;
-
-            DataPurchasesView.ColumnHeadersDefaultCellStyle.Alignment =
-                DataGridViewContentAlignment.MiddleCenter;
+            DataPurchaseView.Create(_purchasesSearch, DataPurchasesView);
 
             FacePriceRadioButton.Checked = true;
         }
