@@ -40,6 +40,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lableValueOfDiscount = new System.Windows.Forms.Label();
             this.TextBoxValueDiscount = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelPressEnter = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,7 +151,7 @@
             // 
             this.lableValueOfDiscount.AutoSize = true;
             this.lableValueOfDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lableValueOfDiscount.Location = new System.Drawing.Point(12, 133);
+            this.lableValueOfDiscount.Location = new System.Drawing.Point(13, 126);
             this.lableValueOfDiscount.Name = "lableValueOfDiscount";
             this.lableValueOfDiscount.Size = new System.Drawing.Size(88, 20);
             this.lableValueOfDiscount.TabIndex = 12;
@@ -160,7 +162,7 @@
             // TextBoxValueDiscount
             // 
             this.TextBoxValueDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxValueDiscount.Location = new System.Drawing.Point(161, 129);
+            this.TextBoxValueDiscount.Location = new System.Drawing.Point(159, 122);
             this.TextBoxValueDiscount.Name = "TextBoxValueDiscount";
             this.TextBoxValueDiscount.Size = new System.Drawing.Size(95, 29);
             this.TextBoxValueDiscount.TabIndex = 13;
@@ -168,12 +170,32 @@
             this.TextBoxValueDiscount.Visible = false;
             this.TextBoxValueDiscount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(133, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(139, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Нажмите Enter для ввода.";
+            // 
+            // labelPressEnter
+            // 
+            this.labelPressEnter.AutoSize = true;
+            this.labelPressEnter.Location = new System.Drawing.Point(135, 151);
+            this.labelPressEnter.Name = "labelPressEnter";
+            this.labelPressEnter.Size = new System.Drawing.Size(139, 13);
+            this.labelPressEnter.TabIndex = 15;
+            this.labelPressEnter.Text = "Нажмите Enter для ввода.";
+            // 
             // Purchase
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(272, 203);
+            this.Controls.Add(this.labelPressEnter);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.TextBoxValueDiscount);
             this.Controls.Add(this.lableValueOfDiscount);
             this.Controls.Add(this.groupBox1);
@@ -208,6 +230,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lableValueOfDiscount;
         private System.Windows.Forms.TextBox TextBoxValueDiscount;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelPressEnter;
     }
 }
 
