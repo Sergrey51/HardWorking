@@ -177,7 +177,7 @@ namespace WinFormApp
             catch (Exception ex)
             {
                 MessageBox.Show($"{ex.Message} " +
-                    $"\nВведите десятичное число!!(Через запятую)");
+                    $"\nВведите десятичное число (Через запятую).");
             }
         }
 

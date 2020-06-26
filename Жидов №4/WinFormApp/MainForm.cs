@@ -90,8 +90,7 @@ namespace WinFormApp
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                saveFileDialog.Filter = "kek files (*.kek)|*.kek|" +
-                    "All files (*.*)|*.*";
+                saveFileDialog.Filter = "kek files (*.kek)|*.kek";
                 saveFileDialog.FilterIndex = 1;
                 saveFileDialog.RestoreDirectory = true;
 
@@ -105,7 +104,6 @@ namespace WinFormApp
                         formatter.Serialize(fileStream, _purchases);
                         MessageBox.Show("Файл сохранён!");
                     }
-
                 }
             }
         }
@@ -119,8 +117,7 @@ namespace WinFormApp
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "kek files (*.kek)|*.kek|" +
-                    "All files (*.*)|*.*";
+                openFileDialog.Filter = "kek files (*.kek)|*.kek";
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true;
 
@@ -129,36 +126,26 @@ namespace WinFormApp
                     var formatter = new BinaryFormatter();
                     var filePath = openFileDialog.FileName;
 
-                    if (Path.GetExtension(filePath) == ".kek")
+                    try
                     {
-                        try
+                        using (var fileStream = new FileStream(filePath,
+                             FileMode.OpenOrCreate))
                         {
-                            using (var fileStream = new FileStream(filePath,
-                                 FileMode.OpenOrCreate))
+                            var newpurchases = (BindingList<IPurchase>)
+                                formatter.Deserialize(fileStream);
+
+                            _purchases.Clear();
+
+                            foreach (var purchase in newpurchases)
                             {
-                                var newpurchases = (BindingList<IPurchase>)
-                                    formatter.Deserialize(fileStream);
-
-                                _purchases.Clear();
-
-                                foreach (var purchase in newpurchases)
-                                {
-                                    _purchases.Add(purchase);
-                                }
+                                _purchases.Add(purchase);
                             }
                         }
-                        catch
-                        {
-                            MessageBox.Show("Файл повреждён, " +
-                                "невозможно загрузить.");
-                        }
-
                     }
-                    else
+                    catch
                     {
-                        MessageBox.Show("Выбран файл с некорректным" +
-                            " форматом. Необходимо выбрать файл " +
-                            "формата kek.");
+                        MessageBox.Show("Файл повреждён, " +
+                            "невозможно загрузить.");
                     }
                 }
             }
