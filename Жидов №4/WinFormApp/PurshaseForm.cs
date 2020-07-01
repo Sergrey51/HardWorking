@@ -28,19 +28,23 @@ namespace WinFormApp
         private bool _isCorrect = false;
 
         /// <summary>
-        /// Лист покупок из основной формы
+        /// Свойство для вывода информации о покупке
         /// </summary>
-        private BindingList<IPurchase> _purchases;
+        public IPurchase PurchaseDone
+        {
+            get
+            {
+                return _purchase;
+            }
+        }
 
         /// <summary>
         /// Метод, инициализирующий форму
         /// </summary>
         /// <param name="purchases">Список покупок</param>
-        public Purchase(BindingList<IPurchase> purchases)
+        public Purchase()
         {
             InitializeComponent();
-
-            _purchases = purchases;
 
             #if !DEBUG
             RandomButton.Visible = false;
@@ -189,10 +193,9 @@ namespace WinFormApp
         private void AddPurchaseButton_Click(object sender, EventArgs e)
         {
             EnterInformarion();
-            if (_purchase.FacePrice != 0)
-            {
-                _purchases.Add(_purchase);
-            }
+
+            this.DialogResult = DialogResult.OK;
+
             if (_isCorrect) Close();
         }
 
@@ -213,7 +216,8 @@ namespace WinFormApp
         /// <param name="e"></param>
         private void RandomButton_Click(object sender, EventArgs e)
         {
-            _purchases.Add(RandomPurchase.CreatePurchase());
+            _purchase = RandomPurchase.CreatePurchase();
+            this.DialogResult = DialogResult.OK;
             Close();
         }
     }

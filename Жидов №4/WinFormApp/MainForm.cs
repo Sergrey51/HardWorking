@@ -51,8 +51,12 @@ namespace WinFormApp
         /// <param name="e"></param>
         private void AddPurchase_Click(object sender, EventArgs e)
         {
-            var purchase = new Purchase(_purchases);
-            purchase.Show();
+            var purchase = new Purchase();
+
+            if (purchase.ShowDialog() == DialogResult.OK)
+            {
+                _purchases.Add(purchase.PurchaseDone);
+            }
         }
 
         /// <summary>
